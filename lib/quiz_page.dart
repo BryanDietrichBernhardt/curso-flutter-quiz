@@ -10,6 +10,30 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
+    List quiz = [
+      {
+        "question": "Qual a linguagem do Flutter?",
+        "options": [
+          "JS",
+          "Swift",
+          "Dart",
+          "Kotlin",
+        ],
+        "response": 1
+      }
+    ];
+
+    quiz.add({
+      "question": "O que é o Flutter?",
+      "options": [
+        "Linguagem",
+        "Aplicativo",
+        "SDK",
+        "IDE",
+      ],
+      "response": 3
+    });
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -40,7 +64,7 @@ class _QuizState extends State<Quiz> {
                 ),
                 child: const Text(
                   "Resposta 1",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
               ElevatedButton(
@@ -51,7 +75,7 @@ class _QuizState extends State<Quiz> {
                 ),
                 child: const Text(
                   "Resposta 2",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
               ElevatedButton(
@@ -62,7 +86,7 @@ class _QuizState extends State<Quiz> {
                 ),
                 child: const Text(
                   "Resposta 3",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
               ElevatedButton(
@@ -73,7 +97,7 @@ class _QuizState extends State<Quiz> {
                 ),
                 child: const Text(
                   "Resposta 4",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 22),
                 ),
               )
             ],
