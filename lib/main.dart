@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: const Center(
             child: Text("Quiz Flutter & Dart"),
           ),
@@ -21,8 +22,9 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const FlutterLogo(
-                size: 300,
+              Image.asset(
+                'assets/images/Flutter_logo_text.png',
+                width: 350,
               ),
               ElevatedButton(
                 onPressed: () {},
