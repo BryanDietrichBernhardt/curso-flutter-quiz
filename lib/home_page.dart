@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
                   width: 350,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'quiz');
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(20),
                     minimumSize: const Size(160, 50),

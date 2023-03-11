@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/result_page.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -8,15 +9,17 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  int questionNumber = 1;
+  int score = 0;
   @override
   Widget build(BuildContext context) {
     List quiz = [
       {
         "question": "Qual a linguagem do Flutter?",
         "options": [
-          "JS",
-          "Swift",
           "Dart",
+          "Swift",
+          "JS",
           "Kotlin",
         ],
         "response": 1
@@ -34,7 +37,25 @@ class _QuizState extends State<Quiz> {
       "response": 3
     });
 
-    int questionNumber = 1;
+    void checkResponse(int responseNumber) {
+      setState(() {
+        if (quiz[questionNumber - 1]['response'] == responseNumber) {
+          score++;
+        }
+        if (questionNumber == quiz.length) {
+          Navigator.pushNamed(
+            context,
+            'result',
+            arguments: ResultPageArgs(
+              score,
+              quiz.length,
+            ),
+          );
+        } else {
+          questionNumber++;
+        }
+      });
+    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -64,7 +85,9 @@ class _QuizState extends State<Quiz> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  checkResponse(1);
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(20),
                   minimumSize: const Size(double.infinity, 50),
@@ -77,7 +100,9 @@ class _QuizState extends State<Quiz> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  checkResponse(2);
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(20),
                   minimumSize: const Size(double.infinity, 50),
@@ -88,7 +113,9 @@ class _QuizState extends State<Quiz> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  checkResponse(3);
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(20),
                   minimumSize: const Size(double.infinity, 50),
@@ -99,7 +126,9 @@ class _QuizState extends State<Quiz> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  checkResponse(4);
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(20),
                   minimumSize: const Size(double.infinity, 50),

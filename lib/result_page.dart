@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/quiz_page.dart';
 
-class ResultPage extends StatelessWidget {
-  const ResultPage(
-      {super.key, required this.score, required this.numberOfQuestions});
+class ResultPageArgs {
   final int score;
   final int numberOfQuestions;
 
+  ResultPageArgs(this.score, this.numberOfQuestions);
+}
+
+class ResultPage extends StatelessWidget {
+  static const routeName = 'result';
+  const ResultPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments as ResultPageArgs;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -31,13 +39,16 @@ class ResultPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Você acertou\n$score de $numberOfQuestions\nperguntas",
+                  "Você acertou\n${args.score} de ${args.numberOfQuestions}\nperguntas",
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'quiz');
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(20),
                     minimumSize: const Size(160, 50),
