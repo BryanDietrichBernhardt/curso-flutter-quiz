@@ -34,6 +34,8 @@ class _QuizState extends State<Quiz> {
       "response": 3
     });
 
+    int questionNumber = 1;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -50,54 +52,61 @@ class _QuizState extends State<Quiz> {
             children: [
               Align(
                 alignment: Alignment.topRight,
-                child: Text("Pergunta 1 de 10"),
+                child: Text("Pergunta $questionNumber de ${quiz.length}"),
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Pergunta"),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(20),
-                  minimumSize: const Size(250, 50),
-                ),
-                child: const Text(
-                  "Resposta 1",
-                  style: TextStyle(fontSize: 22),
+                child: Text(
+                  "${quiz[questionNumber - 1]["question"]}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(20),
-                  minimumSize: const Size(250, 50),
+                  minimumSize: const Size(double.infinity, 50),
                 ),
-                child: const Text(
-                  "Resposta 2",
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(20),
-                  minimumSize: const Size(250, 50),
-                ),
-                child: const Text(
-                  "Resposta 3",
-                  style: TextStyle(fontSize: 22),
+                child: Text(
+                  quiz[questionNumber - 1]['options'][0],
+                  style: const TextStyle(
+                    fontSize: 22,
+                  ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(20),
-                  minimumSize: const Size(250, 50),
+                  minimumSize: const Size(double.infinity, 50),
                 ),
-                child: const Text(
-                  "Resposta 4",
-                  style: TextStyle(fontSize: 22),
+                child: Text(
+                  quiz[questionNumber - 1]['options'][1],
+                  style: const TextStyle(fontSize: 22),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(20),
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                child: Text(
+                  quiz[questionNumber - 1]['options'][2],
+                  style: const TextStyle(fontSize: 22),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(20),
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                child: Text(
+                  quiz[questionNumber - 1]['options'][3],
+                  style: const TextStyle(fontSize: 22),
                 ),
               )
             ],
