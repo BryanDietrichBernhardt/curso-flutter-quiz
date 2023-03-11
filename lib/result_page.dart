@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/quiz_page.dart';
+import 'quiz_data.dart';
 
 class ResultPageArgs {
   final int score;
@@ -15,6 +16,7 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments as ResultPageArgs;
+    quiz.shuffle();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -47,7 +49,7 @@ class ResultPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'quiz');
+                    Navigator.pushNamed(context, 'quiz', arguments: quiz);
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(20),

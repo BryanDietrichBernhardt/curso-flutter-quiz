@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/result_page.dart';
-import 'quiz_data.dart';
 
 class Quiz extends StatefulWidget {
-  const Quiz({super.key});
+  const Quiz({super.key, required this.quiz});
+  final List quiz;
 
   @override
   State<Quiz> createState() => _QuizState();
@@ -12,20 +12,37 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   int questionNumber = 1;
   int score = 0;
+
   @override
   Widget build(BuildContext context) {
+    for (var element in widget.quiz) {
+      int correct = element['response'];
+      List options = element['options'];
+      String correctText = element['options'][correct - 1];
+
+      options.shuffle();
+      int i = 1;
+      for (var element in options) {
+        if (element == correctText) {
+          correct = i;
+        }
+        i++;
+      }
+      element['response'] = correct;
+    }
+
     void checkResponse(int responseNumber) {
       setState(() {
-        if (quiz[questionNumber - 1]['response'] == responseNumber) {
+        if (widget.quiz[questionNumber - 1]['response'] == responseNumber) {
           score++;
         }
-        if (questionNumber == quiz.length) {
+        if (questionNumber == widget.quiz.length) {
           Navigator.pushNamed(
             context,
             'result',
             arguments: ResultPageArgs(
               score,
-              quiz.length,
+              widget.quiz.length,
             ),
           );
         } else {
@@ -50,12 +67,13 @@ class _QuizState extends State<Quiz> {
             children: [
               Align(
                 alignment: Alignment.topRight,
-                child: Text("Pergunta $questionNumber de ${quiz.length}"),
+                child:
+                    Text("Pergunta $questionNumber de ${widget.quiz.length}"),
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${quiz[questionNumber - 1]["question"]}",
+                  "${widget.quiz[questionNumber - 1]["question"]}",
                   style: const TextStyle(
                     fontSize: 16,
                   ),
@@ -70,7 +88,7 @@ class _QuizState extends State<Quiz> {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 child: Text(
-                  quiz[questionNumber - 1]['options'][0],
+                  widget.quiz[questionNumber - 1]['options'][0],
                   style: const TextStyle(
                     fontSize: 22,
                   ),
@@ -85,7 +103,7 @@ class _QuizState extends State<Quiz> {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 child: Text(
-                  quiz[questionNumber - 1]['options'][1],
+                  widget.quiz[questionNumber - 1]['options'][1],
                   style: const TextStyle(fontSize: 22),
                 ),
               ),
@@ -98,7 +116,7 @@ class _QuizState extends State<Quiz> {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 child: Text(
-                  quiz[questionNumber - 1]['options'][2],
+                  widget.quiz[questionNumber - 1]['options'][2],
                   style: const TextStyle(fontSize: 22),
                 ),
               ),
@@ -111,7 +129,7 @@ class _QuizState extends State<Quiz> {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 child: Text(
-                  quiz[questionNumber - 1]['options'][3],
+                  widget.quiz[questionNumber - 1]['options'][3],
                   style: const TextStyle(fontSize: 22),
                 ),
               )
