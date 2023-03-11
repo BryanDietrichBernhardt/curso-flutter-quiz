@@ -1,6 +1,12 @@
-# quiz
+# Flutter Quiz
 
-A new Flutter project.
+Um projeto de um quiz de Flutter mobile desenvolvido com Flutter.
+
+## Screenshots
+
+![homePage](/assets/images/home_screenshot.png)
+![quizPage](/assets/images/quiz_screenshot.png)
+![resultPage](/assets/images/result_screenshot.png)
 
 ## Getting Started
 
