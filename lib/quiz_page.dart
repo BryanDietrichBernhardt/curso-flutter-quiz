@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/result_page.dart';
+import 'quiz_data.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -13,30 +14,6 @@ class _QuizState extends State<Quiz> {
   int score = 0;
   @override
   Widget build(BuildContext context) {
-    List quiz = [
-      {
-        "question": "Qual a linguagem do Flutter?",
-        "options": [
-          "Dart",
-          "Swift",
-          "JS",
-          "Kotlin",
-        ],
-        "response": 1
-      }
-    ];
-
-    quiz.add({
-      "question": "O que é o Flutter?",
-      "options": [
-        "Linguagem",
-        "Aplicativo",
-        "SDK",
-        "IDE",
-      ],
-      "response": 3
-    });
-
     void checkResponse(int responseNumber) {
       setState(() {
         if (quiz[questionNumber - 1]['response'] == responseNumber) {
