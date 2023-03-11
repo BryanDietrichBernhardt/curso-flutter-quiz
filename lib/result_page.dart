@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ResultPage extends StatelessWidget {
+  const ResultPage(
+      {super.key, required this.score, required this.numberOfQuestions});
+  final int score;
+  final int numberOfQuestions;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +23,18 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset(
-                  'assets/images/Flutter_logo_text.png',
-                  width: 350,
+                const Text(
+                  "Resultado",
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  "Você acertou\n$score de $numberOfQuestions\nperguntas",
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {},
@@ -31,7 +43,7 @@ class HomePage extends StatelessWidget {
                     minimumSize: const Size(160, 50),
                   ),
                   child: const Text(
-                    "Jogar",
+                    "Jogar novamente",
                     style: TextStyle(fontSize: 30),
                   ),
                 )
