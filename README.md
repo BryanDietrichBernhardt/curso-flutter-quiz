@@ -1,12 +1,14 @@
 # Flutter Quiz
 
-Um projeto de um quiz de Flutter mobile desenvolvido com Flutter.
+Um projeto de um quiz de Flutter e Dart mobile desenvolvido com Flutter.
 
 ## Screenshots
 
-![homePage](/assets/images/home_screenshot.png)
-![quizPage](/assets/images/quiz_screenshot.png)
-![resultPage](/assets/images/result_screenshot.png)
+<div>
+  <img src="/assets/images/home_screenshot.png" height="550">
+  <img src="/assets/images/quiz_screenshot.png" height="550">
+  <img src="/assets/images/result_screenshot.png" height="550">
+</div>
 
 ## Getting Started
 
